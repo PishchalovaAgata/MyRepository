@@ -1,0 +1,11 @@
+commit 1701dc93ae33318a6d325c2ac53f6195b6c79331
+Author: PishchalovaAgata <zemtsov.69@mail.ru>
+Date:   Tue Feb 7 19:21:02 2017 +0300
+
+    add task1/status.txt
+
+commit c475ea1278cfd5d7d083326ef29c78a9416a2db1
+Author: PishchalovaAgata <zemtsov.69@mail.ru>
+Date:   Tue Feb 7 19:19:44 2017 +0300
+
+    add .gitignore
