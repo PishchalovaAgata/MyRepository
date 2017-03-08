@@ -235,8 +235,10 @@ function addArticle(article) {
 
 function editArticle(id, article) {
     var _article;
-    if((_article = getArticle(id)) === undefined)
+    var _extra;
+    if((_extra = getArticle(id)) === undefined)
         return false;
+    _article = Object.assign(_extra);
     if(article.title !== undefined)
         _article.title=article.title;
     if(article.summary !== undefined)
