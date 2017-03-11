@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles.css">
+    <script src="Script4.js"></script>
+    <title>UE News</title>
+</head>
+<body>
+<div class="Name-of-the-site">
+    <div class = "logo-image">
+        <img src="logoNews.PNG" alt="logo">
+    </div>
+
+    <h1>URBAN EVEREST POST</h1>
+    <span class="User-Name">Имя пользователя: </span>
+</div>
+
+<div class="menu">
+
+    <div class="demo">
+        <label class="btn" for="modal">Фильтрация</label>
+        <label class="btn">Главная</label>
+        <label class="btn">Добавить новость</label>
+        <label class="btn">Выйти</label>
+        <label class = "btn" for="modal-2">Войти</label>
+    </div>
+
+    <div class="modal">
+        <input class="modal-open" id="modal-2" type="checkbox" hidden>
+        <div class="modal-wrap" aria-hidden="true" role="dialog">
+            <label class="modal-overlay" for="modal-2"></label>
+            <div class="modal-dialog">
+                <div class="modal-header">
+                    <h2>Форма авторизации</h2>
+                    <label class="btn-close" for="modal-2" aria-hidden="true">×</label>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <input name="login" placeholder="Укажите ваш Логин " class="textbox" required />
+                        <input name="password" placeholder="Укажите ваш пароль " class="textbox" type="email" required />
+                        <input name="submit" class="btn btn-form" type="submit" value="Отправить" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal">
+        <input class="modal-open" id="modal" type="checkbox" hidden>
+        <div class="modal-wrap" aria-hidden="true" role="dialog">
+            <label class="modal-overlay" for="modal"></label>
+            <div class="modal-dialog">
+                <div class="modal-header">
+                    <h2>Фильтрация</h2>
+                    <label class="btn-close" for="modal" aria-hidden="true">×</label>
+                </div>
+                <div class="modal-body">
+                    <input name="name" placeholder="Автор" class="textbox" required />
+                    <input name="name" placeholder="Дата с дд.мм.гггг" class="textbox" required />
+                    <input name="name" placeholder="Дата до дд.мм.гггг" class="textbox" required />
+                </div>
+                <div class="modal-footer">
+                    <label class="btn btn-form" for="modal">Вперед!</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="body-news"> </div>
+
+<template id = "news-template">
+    <div class = "block-of-the-news">
+        <div class="buttonHolder">
+            <a href="#" class="button tick"></a>
+            <a href="#" class="button cross"></a>
+        </div>
+        <h1>
+
+        </h1>
+        <span class="author-of-the-news"> </span>
+        <time class="date-of-the-post"></time>
+        <div class = "image-for-the-news">
+            <img src ="" alt="">
+        </div>
+        <p>
+
+            <span class="Read-More">
+                <a href>Читать полностью...</a>
+            </span>
+        </p>
+    </div>
+</template>
+
+<div class="Load-more">
+    <a onclick="DOMService.Initialization()">Показать больше...</a>
+</div>
+
+<div class="information-footer">
+    <p><i>UEP | Пищалова Агата | 2 курс 6 группа | Обратная связь: <a href="mailto: agata.pishalova.97@mail.com">agata.pishalova.97@mail.com</a> | 14.02.2017</i></p>
+</div>
+<script>
+    DOMService.Initialization();
+</script>
+</body>
+</html>
