@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles.css">
+    <script src="Script4.js"></script>
+    <title>UE News</title>
+</head>
+<body>
+<div class="Name-of-the-site">
+    <div class = "logo-image">
+        <img src="logoNews.PNG" alt="logo">
+    </div>
+
+    <h1>URBAN EVEREST POST</h1>
+    <span class="User-Name" id = "username"> </span>
+</div>
+
+<div class="menu">
+
+    <div class="demo">
+        <label class="btn" for="modal">Фильтрация</label>
+        <label class="btn" id = "main-page">Главная</label>
+        <label class="btn" id = "news-template-add-news">Добавить новость</label>
+        <label class="btn" id = "quit-btn">Выйти</label>
+        <label class = "btn" id = "logIn-btn" for="modal-2">Войти</label>
+    </div>
+
+    <div class="modal">
+        <input class="modal-open" id="modal-2" type="checkbox" hidden>
+        <div class="modal-wrap" aria-hidden="true" role="dialog">
+            <label class="modal-overlay" for="modal-2"></label>
+            <div class="modal-dialog">
+                <div class="modal-header">
+                    <h2>Форма авторизации</h2>
+                    <label class="btn-close" for="modal-2" aria-hidden="true">×</label>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <input name="login" placeholder="Укажите ваш Логин " id = "login-name" class="textbox" required />
+                        <input name="password" placeholder="Укажите ваш пароль " id = "login-password" class="textbox" type="email" required />
+                        <input name="submit" class="btn btn-form" id = "login-send-btn" value="Отправить" />
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal">
+        <input class="modal-open" id="modal" type="checkbox" hidden>
+        <div class="modal-wrap" aria-hidden="true" role="dialog">
+            <label class="modal-overlay" for="modal"></label>
+            <div class="modal-dialog">
+                <div class="modal-header">
+                    <h2>Фильтрация</h2>
+                    <label class="btn-close" for="modal" aria-hidden="true">×</label>
+                </div>
+                <div class="modal-body">
+                    <input name="name" placeholder="Автор" id= "filtration-author" class="textbox" required />
+                    <input name="date" placeholder="Дата с ГГГГ/ММ/ДД " id="filtration-date-from" class="textbox" required />
+                    <input name="date" placeholder="Дата по ГГГГ/ММ/ДД" id="filtration-date-to" class="textbox" required />
+                </div>
+                <div class="modal-footer">
+                    <label class="btn btn-form" id= "btn-clean-form">Сбросить значения</label>
+                    <label class="btn btn-form" id= "btn-filtration-form" for="modal">Отправить</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="body-news">
+</div>
+
+
+<template id = "edit-form">
+    <div class = "editForm">
+        <div class="modal-header">
+            <h2>Редактирование новости</h2>
+        </div>
+        <div class="modal-body">
+            <form>
+                <input name="ID" id ="edit-id" placeholder="ID новости" class="textbox" readonly />
+                <input name="nameOfTheNews" id="edit-nameOfTheNews" placeholder="Заглавие новости( < 100 символов ) " class="textbox" maxlength="100" required />
+                <input name="summaryOfTheNews" id = "edit-summaryOfTheNews" placeholder="Краткое содержание новости( < 200 символов ) " class="textbox" maxlength="200" required />
+                <input name="authorOfTheNews" id = "edit-authorOfTheNews" placeholder="Автор новости" class="textbox" readonly />
+                <input name="dateOfTheNews" id = "edit-dateOfTheNews" placeholder="Дата и время" class="textbox" readonly />
+                <input name="imageOfTheNews" id="edit-imageOfTheNews" placeholder="url изображения новости " class="textbox" required />
+                <textarea name="contentOFTheNews" id="edit-contentOFTheNews" rows="6" placeholder="Введите текст новости:" class = "textboxContent"  required></textarea>
+                <input name="submit" class="btn btn-form" id = "edit-btn-form" value="Отправить" />
+            </form>
+        </div>
+    </div>
+</template>
+
+<template id = "newNews-form">
+    <div class = "newNewsForm">
+        <div class="modal-header">
+            <h2>Добавление новости</h2>
+        </div>
+        <div class="modal-body">
+            <form>
+                <input name="ID" id ="newNews-id" placeholder="ID новости" class="textbox" readonly />
+                <input name="nameOfTheNews" id="newNews-nameOfTheNews" placeholder="Заглавие новости( < 100 символов ) " class="textbox" maxlength="100" required />
+                <input name="summaryOfTheNews" id = "newNews-summaryOfTheNews" placeholder="Краткое содержание новости( < 200 символов ) " class="textbox" maxlength="200" required />
+                <input name="authorOfTheNews" id = "newNews-authorOfTheNews" placeholder="Автор новости" class="textbox" readonly />
+                <input name="dateOfTheNews" id = "newNews-dateOfTheNews" placeholder="Дата и время" class="textbox" readonly />
+                <input name="imageOfTheNews" id="newNews-imageOfTheNews" placeholder="url изображения новости " class="textbox" required />
+                <textarea name="contentOFTheNews" id="newNews-contentOFTheNews" rows="5" placeholder="Введите текст новости:" class = "textboxContent"  required></textarea>
+                <input name="submit" class="btn btn-form" id = "newNews-btn-form" value="Отправить" />
+            </form>
+        </div>
+    </div>
+</template>
+
+<template id = "news-template">
+    <div class = "block-of-the-news">
+        <div class="buttonHolder">
+            <a class="button tick" id="news-template-tick"></a>
+            <a class="button cross" id="news-template-cross"></a>
+        </div>
+        <h1>
+        </h1>
+        <span class="author-of-the-news"> </span>
+        <time class="date-of-the-post"></time>
+        <div class = "image-for-the-news">
+            <img src ="" alt="">
+        </div>
+        <p>
+            <span class="Read-More">
+                <a id = "read-more">Читать полностью...</a>
+            </span>
+        </p>
+    </div>
+</template>
+
+<template id = "template-detail-news">
+    <div class = "Detalization">
+        <div class = "block-of-the-news">
+            <div class="buttonHolder">
+                <a class="button tick"></a>
+                <a class="button cross"></a>
+            </div>
+            <h1> </h1>
+            <span class="author-of-the-news"></span>
+            <time class="date-of-the-post"></time>
+            <div class = "image-for-the-news">
+                <img src ="" alt="">
+            </div>
+            <p>
+            </p>
+        </div>
+    </div>
+</template>
+
+<div class="Load-more">
+    <a onclick="DOMService.Initialization()">Показать больше...</a>
+</div>
+
+<div class="information-footer">
+    <p><i>UEP | Пищалова Агата | 2 курс 6 группа | Обратная связь: <a href="mailto: agata.pishalova.97@mail.com">agata.pishalova.97@mail.com</a> | 14.02.2017</i></p>
+</div>
+</body>
+</html>
