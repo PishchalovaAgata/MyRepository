@@ -127,21 +127,21 @@ var ArticleService = (function () {
     }))||articles;
 
     var arrayIMG = [
-        {id: '1', url : "1.png"},
-        {id: '2', url : "2.jpg"},
-        {id: '3', url : "3.jpg"},
-        {id: '4', url : "4.png"},
-        {id: '5', url : "5.jpg"},
-        {id: '6', url : "6.jpg"},
-        {id: '7', url : "7.jpg"},
-        {id: '8', url : "8.jpg"},
-        {id: '9', url : "9.png"},
-        {id: '10', url : "10.jpg"},
-        {id: '11', url : "11.jpg"},
-        {id: '12', url : "12.jpg"},
-        {id: '13', url : "13.jpg"},
-        {id: '14', url : "14.jpg"},
-        {id: '15', url : "15.jpg"}
+        {id: '1', url : "IMG/1.jpg"},
+        {id: '2', url : "IMG/2.jpg"},
+        {id: '3', url : "IMG/3.jpg"},
+        {id: '4', url : "IMG/4.png"},
+        {id: '5', url : "IMG/5.jpg"},
+        {id: '6', url : "IMG/6.jpg"},
+        {id: '7', url : "IMG/7.jpg"},
+        {id: '8', url : "IMG/8.jpg"},
+        {id: '9', url : "IMG/9.png"},
+        {id: '10', url : "IMG/10.jpg"},
+        {id: '11', url : "IMG/11.jpg"},
+        {id: '12', url : "IMG/12.jpg"},
+        {id: '13', url : "IMG/13.jpg"},
+        {id: '14', url : "IMG/14.jpg"},
+        {id: '15', url : "IMG/15.jpg"}
     ];
 
     arrayIMG=(JSON.parse(localStorage.getItem("arrayIMG")))||arrayIMG;

@@ -5,7 +5,7 @@ body{
 }
 
 html{
-    background: url(fon.jpg) fixed;
+    background: url(IMG/fon.jpg) fixed;
 }
 
 .logo-image{
@@ -37,7 +37,7 @@ html{
     padding: 10px ;
     border: 3px solid #196446;
     margin: 10px 100px 10px;
-    background: #c7b39b url(paper_texture600.jpg);
+    background: #c7b39b url(IMG/paper_texture600.jpg);
 }
 
 .image-for-the-news img{
@@ -138,7 +138,7 @@ html{
     max-width: 700px;
     padding: 25px;
     margin: 10px auto;
-    background: url("paper_texture600.jpg");
+    background: url("IMG/paper_texture600.jpg");
     border: 3px solid #194219;
     border-radius: 4px;
     text-align: center;
@@ -196,7 +196,7 @@ html{
     top: 20%;
 }
 .modal-dialog {
-    background: url("paper_texture600.jpg");
+    background: url("IMG/paper_texture600.jpg");
     border: #1a4a1f solid 3px;
     border-radius: 5px;
     position: fixed;
