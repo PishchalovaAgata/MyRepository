@@ -32,13 +32,33 @@ html{
     font-weight: normal;
 }
 
-.block-of-the-news, .editForm, .newNewsForm{
+.block-of-the-news, .editForm, .newNewsForm, .error-block{
     background-size: cover;
-    padding: 10px ;
+    padding: 10px;
     border: 3px solid #196446;
-    margin: 10px 100px 10px;
+    margin: 10px 200px 10px;
     background: #c7b39b url(IMG/paper_texture600.jpg);
+    vertical-align: middle;
 }
+
+
+.error-block h1{
+    font-size: 10vw;
+    font-family: 'Times New Roman', sans-serif;
+    font-weight: 600;
+    line-height: 50px;
+    text-align: center;
+    color: #760702;
+}
+
+.error-block h2{
+    font-size: 7vw;
+    font-family: 'Times New Roman', sans-serif;
+    font-weight: 600;
+    line-height: 70px;
+    text-align: center;
+    color: #1a4a1f;
+    }
 
 .image-for-the-news img{
     display:inline-block;
@@ -85,6 +105,7 @@ html{
     background-color: #2e7061;
     color: #fffde6;
     padding: 1px 0 1px;
+    margin-bottom: 0px;
 }
 
 .information-footer p{
@@ -118,14 +139,14 @@ html{
 
 .Load-more{
     text-align: center;
+    margin: 10px;
 }
 
 .Load-more a{
     text-decoration: none;
-    font-size: 25px;
+    font-size: 20px;
     color: #8a050f;
     position: relative;
-
 }
 
 .Load-more a:hover {
@@ -170,7 +191,7 @@ html{
 .modal-wrap:before {
     content: "";
     display: none;
-    background: rgba(118, 7, 2, 0.6);
+    background: rgba(25, 100, 70, 0.6);
     position: fixed;
     top: 0;
     left: 0;
@@ -339,11 +360,8 @@ html{
     .Name-of-the-site h1{
         font-size:35px !important;
     }
-    .body-of-the-news-portal{
-        width:400px !important;
-    }
     .block-of-the-news h1{
-        font-size:28px !important;
+        font-size:23px !important;
     }
     .block-of-the-news p{
         font-size: 13px !important;
@@ -357,14 +375,11 @@ html{
     .time-of-post{
         font-size: 10px !important;
     }
-    .hashteg-for-the-news{
+    .Load-more a{
         font-size: 10px !important;
     }
-    .Load-more a{
-        font-size: 15px !important;
-    }
     .Read-More a{
-        font-size: 15px !important;
+        font-size: 10px !important;
     }
     .image-for-the-news{
         max-height: 200px !important;

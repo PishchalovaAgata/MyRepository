@@ -439,6 +439,7 @@ var DOMService = (function () {
             clickReadMore(event.target);
         }
         else if(event.target.id === 'main-page'){
+            location.reload();
             clearBodyNews();
             amountOfActualNews=0;
             Initialization();
@@ -505,8 +506,6 @@ var DOMService = (function () {
         document.getElementById("newNews-id").value = id;
         document.getElementById("newNews-authorOfTheNews").value = user;
         document.getElementById("newNews-dateOfTheNews").value =new Date();
-
-
         document.getElementsByClassName("Load-more")[0].style.display = 'none';
 
     }
@@ -536,7 +535,6 @@ var DOMService = (function () {
         dataFiltration.dateEnd = new Date(document.getElementById("filtration-date-to").value);
         dataFiltration.dateBegin = new Date(document.getElementById("filtration-date-from").value);
         dataFiltration.author = document.getElementById("filtration-author").value;
-        console.log(dataFiltration.dateBegin)
         if(isNaN(dataFiltration.dateBegin)){
             dataFiltration.dateBegin = undefined;
         }
@@ -546,9 +544,21 @@ var DOMService = (function () {
         if(dataFiltration.author.length<=0){
             dataFiltration.author = undefined;
         }
-        clearBodyNews();
-        amountOfActualNews =0;
-        Initialization();
+
+        console.log(ArticleService.getArticles(0, 1000000000, dataFiltration))
+        if(ArticleService.getArticles(0, 1000000000, dataFiltration).length === 0 || dataFiltration.length === 0){
+            clearBodyNews();
+            var bodyNews = document.getElementsByClassName("body-news")[0];
+            var data = document.getElementById("error-window");
+            var copy = data.content.cloneNode(true);
+            bodyNews.appendChild(copy);
+            document.getElementsByClassName("Load-more")[0].style.display = 'none';
+        }
+        else {
+            clearBodyNews();
+            amountOfActualNews = 0;
+            Initialization();
+        }
     }
 
     function cleanFiltrationForm(){
@@ -605,7 +615,6 @@ var DOMService = (function () {
             user = name;
             localStorage.setItem("user",name);
             location.reload();
-
         }else
             alert("Неверный логин или пароль!");
     }

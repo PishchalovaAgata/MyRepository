@@ -58,8 +58,8 @@
                 </div>
                 <div class="modal-body">
                     <input name="name" placeholder="Автор" id= "filtration-author" class="textbox" required />
-                    <input name="date" placeholder="Дата с ГГГГ/ММ/ДД " id="filtration-date-from" class="textbox" required />
-                    <input name="date" placeholder="Дата по ГГГГ/ММ/ДД" id="filtration-date-to" class="textbox" required />
+                    <input name="date" placeholder="Дата с ГГГГ/ММ/ДД " id="filtration-date-from" class="textbox" type="date" required />
+                    <input name="date" placeholder="Дата по ГГГГ/ММ/ДД" id="filtration-date-to" class="textbox" type="date" required />
                 </div>
                 <div class="modal-footer">
                     <label class="btn btn-form" id= "btn-clean-form">Сбросить значения</label>
@@ -72,6 +72,14 @@
 
 <div class="body-news">
 </div>
+
+
+<template id ="error-window">
+    <div class ="error-block">
+        <h1>ОШИБКА!</h1>
+        <h2>Произошла ошибка, перейдите на главную страницу!</h2>
+    </div>
+</template>
 
 
 <template id = "edit-form">
