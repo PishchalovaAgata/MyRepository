@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/PishchalovaAgata/MyRepository#readme",
   "dependencies": {
-    "express": "^4.15.2"
+    "body-parser": "^1.17.1",
+    "diskdb": "^0.1.17",
+    "express": "^4.15.2",
+    "nodemon": "^1.11.0"
   }
 }
