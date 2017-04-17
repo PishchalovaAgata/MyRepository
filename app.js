@@ -9,6 +9,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get('/', (request, response) => {
   response.sendfile('index.html');
 });
+
 app.listen(3000);
 
 diskdb.connect(`${__dirname}/public/Json`, ['articles', 'arrayIMG', 'Users']);
