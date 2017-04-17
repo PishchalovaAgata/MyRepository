@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="styles.css">
+    <script src="logIn.js"></script>
     <script src="Script4.js"></script>
     <title>UE News</title>
 </head>
@@ -19,7 +20,7 @@
 <div class="menu">
 
     <div class="demo">
-        <label class="btn" for="modal">Фильтрация</label>
+        <label class="btn" for="modal" id = "filtration-btn">Фильтрация</label>
         <label class="btn" id = "main-page">Главная</label>
         <label class="btn" id = "news-template-add-news">Добавить новость</label>
         <label class="btn" id = "quit-btn">Выйти</label>
@@ -33,7 +34,7 @@
             <div class="modal-dialog">
                 <div class="modal-header">
                     <h2>Форма авторизации</h2>
-                    <label class="btn-close" for="modal-2" aria-hidden="true">×</label>
+                    <label id="loginClose" class="btn-close" for="modal-2" aria-hidden="true">×</label>
                 </div>
                 <div class="modal-body">
                     <form>
@@ -159,7 +160,7 @@
 </template>
 
 <div class="Load-more">
-    <a onclick="DOMService.Initialization()">Показать больше...</a>
+    <a id = "load-more">Показать больше...</a>
 </div>
 
 <div class="information-footer">
