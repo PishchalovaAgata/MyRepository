@@ -1,30 +1,27 @@
 const ArticleService = (function () {
   let articles;
+  let error;
   const xhr = new XMLHttpRequest();
-  const getArticlesDiskDB = function () {
-    xhr.open('GET', './articles', false);
-    xhr.send();
-    if (xhr.status !== 200) {
-      alert(`Error ${xhr.status()} : ${xhr.statusText}`);
-    } else {
-      articles = (JSON.parse(xhr.responseText, (key, value) => {
-        if (key === 'createdAt') return new Date(value);
-        return value;
-      }));
-    }
-  };
-  getArticlesDiskDB();
+
+  get('articles')
+      .then(
+      (response) => {
+        articles = (JSON.parse(response, (key, value) => {
+          if (key === 'createdAt') return new Date(value);
+          return value;
+        }));
+      },
+      error => alert(error),
+      );
+
   let arrayIMG;
-  const getArrayIMGDiskDB = function () {
-    xhr.open('GET', './arrayIMG', false);
-    xhr.send();
-    if (xhr.status !== 200) {
-      alert(`Error ${xhr.status()} : ${xhr.statusText}`);
-    } else {
-      arrayIMG = (JSON.parse(xhr.responseText));
-    }
-  };
-  getArrayIMGDiskDB();
+  get('arrayIMG')
+      .then(
+          (response) => {
+            arrayIMG = (JSON.parse(response));
+          },
+          error => alert(error),
+      );
 
 
   function getArticles(skip = 0, top = 19, filterConfiguration = {}) {
@@ -137,12 +134,10 @@ const ArticleService = (function () {
   }
 
   function toLocal() {
-    xhr.open('POST', '/articles', true);
-    xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
-    xhr.send(JSON.stringify(articles));
-    xhr.open('POST', '/arrayIMG', true);
-    xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
-    xhr.send(JSON.stringify(arrayIMG));
+    post('/articles', articles)
+        .then(error => alert(`Rejected: ${error}`));
+    post('/arrayIMG', arrayIMG)
+        .then(error => alert(`Rejected: ${error}`));
   }
 
   return {
@@ -163,9 +158,8 @@ const ArticleService = (function () {
 
 const DOMService = (function () {
   const xhr = new XMLHttpRequest();
-  let user = '';
   let dataFiltration = {};
-  let amountOfActualNews = 0;
+
   const dateNormal = {
     year: 'numeric',
     month: 'numeric',
@@ -367,31 +361,6 @@ const DOMService = (function () {
     arrayConst.FILTR_BTN.style.display = 'none';
   }
 
-  function clicklogOut() {
-    xhr.open('POST', './logOut', true);
-    xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
-    xhr.send();
-    user = null;
-    location.reload();
-  }
-
-  function clickLogIn() {
-    const name = document.getElementById('login-name').value;
-    const password = document.getElementById('login-password').value;
-    const body = { username: name, password };
-    xhr.open('POST', './logIn', true);
-    xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
-    xhr.send(JSON.stringify(body));
-    xhr.open('GET', './actualUser', false);
-    xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
-    xhr.send();
-    if (xhr.status === 200) {
-      user = xhr.responseText;
-      location.reload();
-    } else {
-      alert(xhr.responseText);
-    }
-  }
 
   const documentGOOD = () => {
     arrayConst.FILTR_BTN = document.getElementById('filtration-btn');
@@ -412,8 +381,8 @@ const DOMService = (function () {
       'btn-clean-form': e => cleanFiltrationForm(e),
       'read-more': e => clickReadMore(e),
       'main-page': e => mainPageClick(e),
-      'quit-btn': e => clicklogOut(e),
-      'login-send-btn': e => clickLogIn(e),
+      'quit-btn': e => logout(e),
+      'login-send-btn': e => login(e),
       'load-more': e => initialization(e),
     };
 
@@ -424,14 +393,15 @@ const DOMService = (function () {
     document.getElementsByClassName('body-news')[0].addEventListener('click', event => defineClass(event));
     document.getElementsByClassName('menu')[0].addEventListener('click', event => defineClass(event));
     document.getElementsByClassName('Load-more')[0].addEventListener('click', event => defineClass(event));
-    xhr.open('GET', './actualUser', false);
-    xhr.send();
-    if (xhr.status === 200) {
-      user = xhr.responseText;
-    }
-    initialization();
+    getUSer();
   };
 
 
   document.addEventListener('DOMContentLoaded', documentGOOD);
+  return {
+    initialization,
+    clearBodyNews,
+
+
+  };
 }());
