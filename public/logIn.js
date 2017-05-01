@@ -1,66 +1,89 @@
 const xhr = new XMLHttpRequest();
 let user = '';
 let amountOfActualNews = 0;
-const get = function (url) {
-    return new Promise(function (resolve, reject) {
-        xhr.open('GET', './'+url, false);
-        xhr.onload = function () {
-            if (xhr.status !== 200) {
-                error = new Error(this.statusText);
-                error.code = this.status;
-                reject(error);
-            } else {
-                resolve(xhr.responseText);
-            }
-        };
-        xhr.onerror = function () {
-            reject(new Error("Network Error!"))
-        };
-        xhr.send();
-    });
-};
+
 function post(url, who) {
     return new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest();
         xhr.open('POST', url, true);
         xhr.onerror = function () {
             reject(new Error('Network Error'));
+        };
+        xhr.onload = function () {
+            if (this.status === 200) {
+                resolve(xhr.responseText);
+            } else {
+                const error = new Error(this.statusText);
+                error.code = this.status;
+                reject(error);
+            }
         };
         xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
         xhr.send(JSON.stringify(who));
     });
 }
+function get(url) {
+    return new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', url, false);
+        xhr.onload = function () {
+            if (this.status === 200) {
+                resolve(this.response);
+            } else {
+                const error = new Error(this.statusText);
+                error.code = this.status;
+                reject(error);
+            }
+        };
+        xhr.onerror = function () {
+            reject(new Error('Network Error'));
+        };
+        xhr.send();
+    });
+}
 
 function getUSer(){
-    get("actualUser")
+    get("/user")
         .then(
             response =>{
-                user = xhr.responseText;
+                user = response;
+                alert(response);
                 amountOfActualNews=0;
                 DOMService.clearBodyNews()
                 DOMService.initialization();
-
-
             },
             error => {
                 amountOfActualNews=0;
                 DOMService.clearBodyNews()
                 DOMService.initialization();
-
             }
         );
 }
+
 function  login() {
     const name = document.getElementById('login-name').value;
     const password = document.getElementById('login-password').value;
     const body = { username: name, password };
-    post('/logIn',body)
-        .then(error => alert(`Rejected: ${error}`));
-    getUSer();
-    document.getElementById('loginClose').click()
+    post('/login', body)
+        .then(
+            (response) => {
+                user = response;
+                amountOfActualNews=0;
+                DOMService.clearBodyNews();
+                DOMService.initialization();
+                document.getElementById('loginClose').click();
+            },
+            error => alert(`Rejected: ${error}`)
+        );
 }
+
 function  logout() {
-    post('/logOut')
-        .then(error => alert(`Rejected: ${error}`));
-    user = null;
-    location.reload();
+    post('/logout')
+        .then(
+            (response) => {
+                user =null;
+                location.reload();
+            },
+            error => alert(`Rejected: ${error}`)
+        );
 }
