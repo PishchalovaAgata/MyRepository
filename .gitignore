@@ -2,7 +2,4 @@
 .DS_Store/
 .idea/
 out/
-<<<<<<< HEAD
 /node_modules
-=======
->>>>>>> c475ea1... add .gitignore

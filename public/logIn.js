@@ -47,7 +47,6 @@ function getUSer(){
         .then(
             response =>{
                 user = response;
-                alert(response);
                 amountOfActualNews=0;
                 DOMService.clearBodyNews()
                 DOMService.initialization();
@@ -67,11 +66,11 @@ function  login() {
     post('/login', body)
         .then(
             (response) => {
-                user = response;
                 amountOfActualNews=0;
                 DOMService.clearBodyNews();
                 DOMService.initialization();
                 document.getElementById('loginClose').click();
+                getUSer();
             },
             error => alert(`Rejected: ${error}`)
         );
